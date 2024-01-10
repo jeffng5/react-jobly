@@ -172,10 +172,10 @@ class Job {
   }
 
 
-  static async getJobByCompany(handle) {
+  static async getJobByCompany(companyHandle) {
     const result = await db.query(
       `SELECT * from jobs WHERE companyHandle = $1`
-      , [handle] 
+      , [companyHandle] 
     )
     const jobsByCompany = result.rows
   }

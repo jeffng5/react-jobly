@@ -126,9 +126,9 @@ router.delete("/:id", ensureAdmin, async function (req, res, next) {
   }
 });
 
-router.get("/:handle", async function(req, res, next) {
+router.get("/:companyHandle", async function(req, res, next) {
   try {
-    const job = await Job.getJobByCompany(handle)
+    const job = await Job.getJobByCompany(companyHandle)
     return res.json({ job }) 
   } catch (err) {
     return next(err);

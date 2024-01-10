@@ -12,6 +12,7 @@ import Search from "./Search"
 
 
 
+
 function App() {
   const INITIAL_STATE =[]
   const [formData, setFormData] = useState(INITIAL_STATE)
@@ -34,11 +35,14 @@ function App() {
        
        <Route exact path="/jobs" element={<Jobs />}></Route>
 
+       <Route exact path="/jobs/:companyHandle" element={<Company />}></Route>
+
        <Route exact path="/login" element={<Login />}></Route>
 
        <Route exact path="/signup" element={<SignUp submitForm={submitForm} />}></Route>
 
        <Route exact path="/profile" element={<Profile />}></Route> 
+
 
        <Route exact path="/companies/search" element={<Search submitFormSearch={submitFormSearch} />}></Route>
 
