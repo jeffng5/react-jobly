@@ -188,7 +188,16 @@ class Company {
 
     if (!company) throw new NotFoundError(`No company: ${handle}`);
   }
-}
 
+
+
+  static async findSearch(term) {
+    const result = await db.query(
+      `SELECT * FROM companies WHERE handle LIKE '%${term}%'`
+    )
+    const searchResults = result.rows
+      return searchResults
+  }
+}
 
 module.exports = Company;

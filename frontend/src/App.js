@@ -8,6 +8,7 @@ import NavBar from "./NavBar"
 import Login from "./Login"
 import SignUp from "./SignUp"
 import Profile from "./Profile"
+import Search from "./Search"
 
 
 
@@ -15,6 +16,8 @@ function App() {
   const INITIAL_STATE =[]
   const [formData, setFormData] = useState(INITIAL_STATE)
   const submitForm = (username) => {setFormData(formData => [...formData, {username}])}
+  const submitFormSearch = (search) =>{ setFormData(formData => [...formData, {search}])}
+  
   return (
   
     <div className="App">
@@ -25,7 +28,7 @@ function App() {
     <Routes>
       <Route exact path="/"></Route>
 
-       <Route exact path="/companies" element={<CompanyList />}></Route>
+       <Route exact path="/companies" element={<CompanyList submitFormSearch={submitFormSearch}  />}></Route>
 
        <Route exact path="/companies/:handle" element={<Company />}></Route> 
        
@@ -36,6 +39,8 @@ function App() {
        <Route exact path="/signup" element={<SignUp submitForm={submitForm} />}></Route>
 
        <Route exact path="/profile" element={<Profile />}></Route> 
+
+       <Route exact path="/companies/search" element={<Search submitFormSearch={submitFormSearch} />}></Route>
 
     </Routes>
     </BrowserRouter>  

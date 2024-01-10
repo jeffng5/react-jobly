@@ -69,6 +69,9 @@ router.get("/", async function (req, res, next) {
   } catch (err) {
     return next(err);
   }
+  
+  const searchTerm = await Company.findSearch()
+
 });
 
 /** GET /[handle]  =>  { company }
@@ -127,6 +130,18 @@ router.delete("/:handle", ensureAdmin, async function (req, res, next) {
     return next(err);
   }
 });
+
+router.post("/search", async function (req, res, next) {
+  try {
+    const companyList = await Company.findSearch(term)
+      return res.json({companyList})
+  } catch (err){
+    console.log(err)
+  }
+}
+
+
+)
 
 
 module.exports = router;

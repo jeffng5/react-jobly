@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './SignUp.css'
 
+
 const SignUp = ({submitForm}) => {
     const initialState =[]
     const [formData, setFormData] = useState(initialState)
