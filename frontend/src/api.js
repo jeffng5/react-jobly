@@ -40,25 +40,33 @@ export class JoblyApi {
 
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
-    console.log(res)
+    console.log(res.company)
     return res.company;
   }
 
   // obviously, you'll add a lot here ...
 
-  static async getAllCompanies(name) {
-    let res = await this.request('companies', { name });
+  static async getAllCompanies() {
+    let res = await this.request('companies');
     return res.companies;
 
   }
 
-  static async getJobs(title) {
-    let res = await this.request('jobs', { title });
+  static async getJobs() {
+    let res = await this.request('jobs');
     return res.jobs;
 
   }
 
+  static async signUp() {
+    let res = await this.request('auth/register', "post");
+    return res
+  }
 
+  static async getUsers() {
+    let res = await this.request('users')
+    return res
+  }
 
 
 

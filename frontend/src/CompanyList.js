@@ -12,10 +12,16 @@ const CompanyList = () => {
 
     }, []);
 
-    async function getAllCompanies(name) {
-        const res = await JoblyApi.getAllCompanies(name)
-        console.log(res)
-        setData(res.companies)}
+    async function getAllCompanies() { 
+        try{
+            const res = await JoblyApi.getAllCompanies()
+            console.log(res)
+            setData(res)
+        } catch (err) {
+        console.log(err)
+        }
+    }
+
 
     return (
         <div>

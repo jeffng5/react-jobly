@@ -1,5 +1,5 @@
 .CompanyCard {
-    background-color: white;
+    background-color: rgb(26, 232, 50);
     text-decoration: none;
     font-size: 1.2rem;
 }
@@ -9,4 +9,14 @@
     height: 10rem;
     width: 93vw; */
     background-color: azure;
+}
+
+.card-body {
+    background-color: lightblue;
+    border-style: solid;
+}
+
+.float-end {
+    height: 50px;
+    width: 50px;
 }

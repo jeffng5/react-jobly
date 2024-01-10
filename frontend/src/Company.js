@@ -1,36 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import {JoblyApi} from "./api"
 import { useParams } from 'react-router-dom';
+import JobCard from "./JobCard"
 
-const Company = () => {
-    const params = useParams()
-    const [data, setData] = useState([]);
-    useEffect(()=> {
-        getCompanyData()
-        }, [params.handle]);
-
-        async function getCompanyData() {
-            const res = await JoblyApi.getCompany(params.handle)
-            console.log(res)
-            setData(res.company)
+function Company() {
+    const initialState=[]
+    const {handle} = useParams()
+    const [company, setCompany] = useState(initialState);
+    useEffect(function getCompanyAndJobsForUser() {
+        async function getCompany() {
+          setCompany(await JoblyApi.getCompany(handle));
+        }
+    
+        getCompany();
+      }, [handle]);
+    
+    //   if (!company) return <LoadingSpinner />;
+    
+      return (
+          <div className="CompanyDetail col-md-8 offset-md-2">
+            <h4>{company.name}</h4>
+            <p>{company.description}</p>
+            <JobCard jobs={company.jobs} />
+          </div>
+      );
     }
 
-
-
-    if(data){
-return(
-        <>
-        <div>
-            <h1> HI MY NAME IS</h1>
-           <h1>{data ? data : 'Loading...'}</h1>
-           <h2>{data}</h2>
-    
-    </div>
-</>
-    
-
-)
-}
-}
 
 export default Company

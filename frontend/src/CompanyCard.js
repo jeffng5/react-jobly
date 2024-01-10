@@ -11,7 +11,8 @@ const CompanyCard = ({ name, description, logoUrl, handle }) => (
             {name}
             {logoUrl && <img src={logoUrl}
                              alt={name}
-                             className="float-end" />}
+                             className="float-end" 
+                            />}
           </h6>
           <p><small>{description}</small></p>
         </div>

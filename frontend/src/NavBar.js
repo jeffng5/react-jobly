@@ -13,21 +13,23 @@ function NavBar() {
                 <Nav className="ml-auto" navbar>
                 
                     <NavItem>
+                        <div className= "link">
                         <NavLink to= "/companies">Companies</NavLink>
-                    </NavItem>
+                    </div>
                   
-                    <NavItem>
+                        <div className='link'>
                         <NavLink to="/jobs">Jobs</NavLink>
-                    </NavItem>
+                        </div>
 
-                    <NavItem>
+                    <div className= 'link'>
                         <NavLink to="/login">Login</NavLink>
-                    </NavItem>
-                    <NavItem>
+                    </div>
+                    <div className= 'link'>
                         <NavLink to="/signup">Sign Up</NavLink>
-                    </NavItem>
-                    <NavItem>
+                   </div>
+                   <div className= 'link'>
                         <NavLink to="/profile">Profile</NavLink>
+                        </div>
                     </NavItem>
                 
                 

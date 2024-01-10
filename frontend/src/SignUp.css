@@ -1,0 +1,20 @@
+button {
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    height: 27px;
+    width: 80px;
+}
+
+body {
+    background-color: lightblue;
+
+}
+
+.sign-in-form {
+    padding-bottom: 15px;
+}
+
+.log-in-form {
+    padding-bottom: 15px;
+}
