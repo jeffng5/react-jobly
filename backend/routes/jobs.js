@@ -126,5 +126,15 @@ router.delete("/:id", ensureAdmin, async function (req, res, next) {
   }
 });
 
+router.get("/:handle", async function(req, res, next) {
+  try {
+    const job = await Job.getJobByCompany(handle)
+    return res.json({ job }) 
+  } catch (err) {
+    return next(err);
+  }
+}
+
+)
 
 module.exports = router;

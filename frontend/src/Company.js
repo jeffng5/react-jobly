@@ -7,21 +7,37 @@ function Company() {
     const initialState=[]
     const {handle} = useParams()
     const [company, setCompany] = useState(initialState);
+    const [job, setJob] = useState(initialState)
     useEffect(function getCompanyAndJobsForUser() {
         async function getCompany() {
           setCompany(await JoblyApi.getCompany(handle));
         }
     
         getCompany();
-      }, [handle]);
-    
+      }, 
+      
+      async function getJobByCompany(){
+        setJob(await JoblyApi.getJobByCompany(handle));
+        {
+      }
+      getJobByCompany();},
+      
+      [handle]
+      );
+      
     //   if (!company) return <LoadingSpinner />;
     
       return (
           <div className="CompanyDetail col-md-8 offset-md-2">
             <h4>{company.name}</h4>
             <p>{company.description}</p>
-            <JobCard jobs={company.jobs} />
+            {job.map(c=> (
+            <JobCard 
+            title = {c.title}
+            equity={c.equity}
+            salary={c.salary}
+            />))}
+
           </div>
       );
     }

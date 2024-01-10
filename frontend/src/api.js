@@ -73,7 +73,10 @@ export class JoblyApi {
     return res 
   }
 
-
+  static async getJobsByCompany(companyHandle) {
+    let res = await this.request(`jobs/${companyHandle}`);
+    return res
+  }
 
 
 

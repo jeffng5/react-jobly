@@ -170,6 +170,21 @@ class Job {
 
     if (!job) throw new NotFoundError(`No job: ${id}`);
   }
-}
 
-module.exports = Job;
+
+  static async getJobByCompany(handle) {
+    const result = await db.query(
+      `SELECT * from jobs WHERE companyHandle = $1`
+      , [handle] 
+    )
+    const jobsByCompany = result.rows
+  }
+
+
+
+
+
+
+
+}
+  module.exports = Job;

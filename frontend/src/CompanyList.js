@@ -44,6 +44,7 @@ const CompanyList = ({submitFormSearch}) => {
         {data.map(c => (
             <CompanyCard 
             key = {c.handle}
+            handle = {c.handle}
             description ={c.description}
             name= {c.name}
             logoUrl = {c.logoUrl}
