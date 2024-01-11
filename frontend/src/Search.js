@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {JoblyApi} from "./api"
 import CompanyCard from './CompanyCard'
+import SearchContext from "./SearchContext"
 
-const Search = ({submitFormSearch}) => {
+
+const Search = () => {
+    const term = useContext(SearchContext)
+    console.log(term)
     const initialState =[]
     const [formData, setFormData] = useState(initialState)
 
     useEffect(() => {
         getSearch()
 
-    }, []);
+    }, [{term}]);
 
     async function getSearch() {
         try{
-            const res = await JoblyApi.getSearch()
+            const res = await JoblyApi.getSearch({term})
             console.log(res)
             setFormData(res)
         } catch (err) {

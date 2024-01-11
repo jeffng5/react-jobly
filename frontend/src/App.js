@@ -16,8 +16,10 @@ import Search from "./Search"
 function App() {
   const INITIAL_STATE =[]
   const [formData, setFormData] = useState(INITIAL_STATE)
+  const [searchData,setSearchData] = useState(INITIAL_STATE)
   const submitForm = (username) => {setFormData(formData => [...formData, {username}])}
-  const submitFormSearch = (search) =>{ setFormData(formData => [...formData, {search}])}
+  const submitFormSearch = (term) =>{setSearchData(searchData => [...searchData, {term}])}
+  console.log(searchData)
   
   return (
   
@@ -29,7 +31,7 @@ function App() {
     <Routes>
       <Route exact path="/"></Route>
 
-       <Route exact path="/companies" element={<CompanyList submitFormSearch={submitFormSearch}  />}></Route>
+       <Route exact path="/companies" element={<CompanyList />}></Route>
 
        <Route exact path="/companies/:handle" element={<Company />}></Route> 
        
@@ -44,7 +46,7 @@ function App() {
        <Route exact path="/profile" element={<Profile />}></Route> 
 
 
-       <Route exact path="/companies/search" element={<Search submitFormSearch={submitFormSearch} />}></Route>
+       <Route exact path="/companies/search" element={<Search />}></Route>
 
     </Routes>
     </BrowserRouter>  

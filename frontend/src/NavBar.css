@@ -14,7 +14,8 @@ nav a {
 
 .link{
   display: inline-block;
-  margin-right: 150px;
+  justify-content: center;
+
 }
 
 /* nav a.active {
