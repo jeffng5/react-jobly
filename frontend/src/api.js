@@ -59,7 +59,7 @@ export class JoblyApi {
   }
 
   static async signUp() {
-    let res = await this.request('auth/register', "post");
+    let res = await this.request('auth/register');
     return res
   }
 
@@ -68,9 +68,9 @@ export class JoblyApi {
     return res
   }
 
-  static async getSearch(term) {
-    let res = await this.request(`companies/search`);
-    return res 
+  static async getSearch(name) {
+    let res = await this.request(`companies/search`, {name});
+    return res.companies
   }
 
   static async getJobsByCompany(handle) {
@@ -79,8 +79,11 @@ export class JoblyApi {
     return res.company.jobs
   }
 
+  static async loginUser(username, password){
+    let res = await this.request("users/login")
+    return res
 
-
+  }
 
 }
 

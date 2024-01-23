@@ -134,7 +134,7 @@ router.delete("/:handle", ensureAdmin, async function (req, res, next) {
 router.get("/search", async function (req, res, next) {
 
   try {
-    const companyList = await Company.findSearch(req.params.handle) 
+    const companyList = await Company.findSearch(req.body) 
     return res.json({companyList})
   
   } catch (err){

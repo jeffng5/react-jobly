@@ -3,18 +3,18 @@ import {JoblyApi} from "./api"
 import CompanyCard from "./CompanyCard"
 import "./SignUp.css"
 import { Link } from 'react-router-dom';
-import SearchContext from "./SearchContext"
+import Search from "./Search"
 
 
 
 const CompanyList = () => {
-    const initialState = []
+    const initialState = null
     const [data, setData] = useState([]);
     const [formData, setFormData] = useState(initialState)
 
 
     const handleSubmit = (e) => {e.preventDefault();
-       <SearchContext.Provider value = {setFormData}>e.target.value</SearchContext.Provider>
+
       setFormData(e.target.value);
         
     }
@@ -40,10 +40,10 @@ const CompanyList = () => {
     return (
         <div>
             <form className="searchbar">
-                <input id="Search Company" type="text" placeholder= "search" onChange={handleSubmit} value={formData}></input>
-                <Link to="search">
-                <button onClick={handleSubmit}>Search</button> 
-                </Link> 
+                <input id="Search Company" type="text" placeholder= "search companies" onChange={handleSubmit} value={formData}></input>
+                <Link to = 'search'>
+                <button onClick={setFormData}>Search</button> 
+                </ Link>
             </form> 
         {data.map(c => (
             <CompanyCard 
@@ -53,6 +53,10 @@ const CompanyList = () => {
             name= {c.name}
             logoUrl = {c.logoUrl}
         />))}
+    
+        
+        
+        
         </div>
 
     )

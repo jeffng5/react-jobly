@@ -14,7 +14,7 @@ nav a {
 
 .link{
   display: inline-block;
-  justify-content: center;
+  margin-inline-end: 60px;
 
 }
 

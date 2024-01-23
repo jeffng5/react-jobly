@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './App.css';
-import Company from "./Company"
+import Company from "./Company-Detail"
 import { BrowserRouter, Routes, Route, Switch } from "react-router-dom"
 import CompanyList from "./CompanyList"
 import Jobs from "./Jobs"
@@ -8,7 +8,7 @@ import NavBar from "./NavBar"
 import Login from "./Login"
 import SignUp from "./SignUp"
 import Profile from "./Profile"
-import Search from "./Search"
+import CompanySearch from "./CompanySearch"
 
 
 
@@ -45,8 +45,7 @@ function App() {
 
        <Route exact path="/profile" element={<Profile />}></Route> 
 
-
-       <Route exact path="/companies/search" element={<Search />}></Route>
+       <Route exact path="/companies/search" element={<CompanySearch />}></Route>
 
     </Routes>
     </BrowserRouter>  
