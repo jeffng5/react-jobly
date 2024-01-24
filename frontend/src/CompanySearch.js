@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {JoblyApi} from "./api"
 import { useParams } from 'react-router-dom';
 import JobCard from "./JobCard"
+import CompanyCard from "./CompanyCard"
 
 function CompanySearch() {
     const initialState=[]
@@ -34,11 +35,17 @@ function CompanySearch() {
     
       return (
         <>
-        <h1>Testing</h1>
+        <h1>Search Company Results</h1>
         <div className="CompanyDetail col-md-8 offset-md-2">
-        <h4>{search.name}</h4>
-        <p>{search.description}</p>
-
+     
+        {search.map(c => (
+            <CompanyCard 
+            key = {c.handle}
+            handle = {c.handle}
+            description ={c.description}
+            name= {c.name}
+            logoUrl = {c.logoUrl}
+/>))}
         {/* {job.map(c=> (
         <JobCard 
         jobs = {c.jobs}

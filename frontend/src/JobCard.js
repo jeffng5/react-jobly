@@ -5,6 +5,7 @@ import './CompanyCard.css';
 /** Show company in list of jobs. */
 
 const JobCard = ({ title, salary, equity, companyHandle, jobs }) => (
+      <>
       <Link className="CompanyCard card m-4" to={`/jobs/${companyHandle}`}>
         <div className="card-body">
           <h6 className="card-title">
@@ -14,8 +15,9 @@ const JobCard = ({ title, salary, equity, companyHandle, jobs }) => (
             <div>Equity : {equity}</div>
           </h6>
           <p><small>Salary : {salary}</small></p>
+          <button>Apply</button>
         </div>
-      </Link>
+      </Link></>
   )
 
 export default JobCard;
