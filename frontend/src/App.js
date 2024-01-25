@@ -14,12 +14,12 @@ import CompanySearch from "./CompanySearch"
 
 
 function App() {
-  const INITIAL_STATE =[]
-  const [formData, setFormData] = useState(INITIAL_STATE)
-  const [searchData,setSearchData] = useState(INITIAL_STATE)
-  const submitForm = (username) => {setFormData(formData => [...formData, {username}])}
-  const submitFormSearch = (term) =>{setSearchData(searchData => [...searchData, {term}])}
-  console.log(searchData)
+  // const INITIAL_STATE =[]
+  // const [formData, setFormData] = useState(INITIAL_STATE)
+  // const [searchData,setSearchData] = useState(INITIAL_STATE)
+  // const submitForm = (username) => {setFormData(formData => [...formData, {username}])}
+  // const submitFormSearch = (term) =>{setSearchData(searchData => [...searchData, {term}])}
+  // console.log(searchData)
   
   return (
   
@@ -41,7 +41,7 @@ function App() {
 
        <Route exact path="/login" element={<Login />}></Route>
 
-       <Route exact path="/signup" element={<SignUp submitForm={submitForm} />}></Route>
+       <Route exact path="/signup" element={<SignUp />}></Route>
 
        <Route exact path="/profile" element={<Profile />}></Route> 
 

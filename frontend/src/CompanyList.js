@@ -38,7 +38,7 @@ const CompanyList = () => {
     async function getSearchTerm(e) {
         e.preventDefault();
         try{
-            const res = await JoblyApi.getSearch(e.target.value)
+            const res = await JoblyApi.getSearch(formData)
             console.log(res)
         }
         catch (err) {
@@ -46,7 +46,7 @@ const CompanyList = () => {
         }
 
     }
-   
+    
     console.log(formData)
 
     return (

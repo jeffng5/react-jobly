@@ -46,50 +46,67 @@ export class JoblyApi {
 
   // obviously, you'll add a lot here ...
 
+// get companies
   static async getAllCompanies() {
     let res = await this.request('companies');
     return res.companies;
 
   }
 
+//get list of all jobs
   static async getJobs() {
     let res = await this.request('jobs');
     return res.jobs;
-
   }
 
+// sign up for site
   static async signUp() {
     let res = await this.request('auth/register');
     return res
   }
 
-  static async getUsers() {
-    let res = await this.request('users')
+//get signed in user 
+  static async getUsers(username) {
+    let res = await this.request(`users/${username}`, {username})
     return res
   }
 
+// look up company via search term  
   static async getSearch(term) {
-    let res = await this.request(`companies`);
+    let res = await this.request('companies/search', {term});
     return res.companies;
   }
 
+// get jobs available for each company by handle
   static async getJobsByCompany(handle) {
     let res = await this.request(`companies/${handle}`);
 
     return res.company.jobs
   }
 
+//user login  
   static async loginUser(username, password){
-    let res = await this.request("users/login")
+    let res = await this.request("auth/token",  {username, password}, 'post')
     return res
 
   }
 
+//edit user profile
+  static async editUser(username){
+    let res = await this.request(`users/${username}`, {username}, "patch")
+    return res
+  }
 }
 
 // for now, put token ("testuser" / "password" on class)
 JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+
+
+localStorage.setItem(JoblyApi.token, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+"SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+"FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc"
+)
 
 

@@ -7,8 +7,7 @@ import CompanyCard from "./CompanyCard"
 function CompanySearch() {
     const initialState=[]
     const { name } = useParams()
-    // const {companyHandle} = useParams()
-    // const [company, setCompany] = useState(initialState);
+
     const [job, setJob] = useState(initialState)
     const [search, setSearch] = useState(initialState)
     useEffect(() => {
@@ -16,16 +15,7 @@ function CompanySearch() {
         let companies = await JoblyApi.getSearch(name);
         setSearch(companies)
       }
-      getSearch()  
-
-    //   async function getJobByCompany(){
-    //     setJob(await JoblyApi.getJobsByCompany(handle));
-        
-    //   }
-    //   getJobByCompany()
-      
-         
-     
+      getSearch();  
     }
        ,[name] 
 
