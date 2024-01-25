@@ -12,6 +12,7 @@ body {
 }
 
 .sign-in-form {
+
     padding-bottom: 15px;
 }
 
@@ -21,4 +22,8 @@ body {
 
 .searchbar {
     padding-bottom: 15px;
+}
+
+div {
+    text-align: center;
 }

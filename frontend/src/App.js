@@ -14,26 +14,28 @@ import { jwtDecode } from "jwt-decode"
 import UserContext from "./UserContext"
 
 
-function App() {
-
-  // const [tokenState, setTokenState] = useState("")
-  // const [currentUser, setCurrentUser] = useState("")
-
 let token = localStorage.getItem("res.token")
-
+console.log(token)
 const decoded = jwtDecode(token)
 
-  return (
+function App() {
+
+
+  // const [tokenState, setTokenState] = useState("")
+  const [currentUser, setCurrentUser] = useState("")
+
+
+return (
     <UserContext.Provider value={decoded.username}> 
-    <div className="App">
-      
+    <div>
+         
     <BrowserRouter>
    
   
     <NavBar /> 
   
     <Routes>
-      <Route exact path = "/"></Route>
+      <Route exact path = "/" element={<Login />}></Route>
       
        <Route exact path="/companies" element={<CompanyList />}></Route>
 
@@ -51,17 +53,17 @@ const decoded = jwtDecode(token)
 
        <Route exact path="/companies/search" element={<CompanySearch />}></Route>
 
-       <Route exact path="logout" element={<LogOut />}></Route>
+       <Route exact path="/logout" element={<LogOut />}></Route>
   
        </Routes>
        
     </BrowserRouter>  
 
     </div>
-    // </UserContext.Provider> 
-  )
-
+  </UserContext.Provider>  
+)
 }
+
 
 
 export default App;
