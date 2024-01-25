@@ -60,8 +60,9 @@ export class JoblyApi {
   }
 
 // sign up for site
-  static async signUp() {
-    let res = await this.request('auth/register');
+  static async signUp(username, password, firstName, lastName, email) {
+    let res = await this.request('auth/register', 
+    {username, password, firstName, lastName, email }, "post")
     return res
   }
 
