@@ -73,6 +73,20 @@ router.get("/", async function (req, res, next) {
   
 });
 
+router.get("/search", async function (req, res, next) {
+  let {term} = req.query
+
+    try {
+      const companyList = await Company.findSearch(term)
+      return res.json({companyList})
+    
+    } catch (err){
+      console.log(err)
+    }
+  }
+  
+  )
+
 /** GET /[handle]  =>  { company }
  *
  *  Company is { handle, name, description, numEmployees, logoUrl, jobs }
@@ -82,6 +96,7 @@ router.get("/", async function (req, res, next) {
  */
 
 router.get("/:handle", async function (req, res, next) {
+  console.log('line 85')
   try {
     const company = await Company.get(req.params.handle);
     return res.json({ company });
@@ -130,19 +145,7 @@ router.delete("/:handle", ensureAdmin, async function (req, res, next) {
   }
 });
 
-router.get("/search", async function (req, res, next) {
-let term = req.query
-  try {
-    const companyList = await Company.findSearch(req.query) 
-    return res.json({companyList})
-  
-  } catch (err){
-    console.log(err)
-  }
-}
 
-
-)
 
 
 module.exports = router;

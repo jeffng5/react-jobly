@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import Company from "./Company-Detail"
 import { BrowserRouter, Routes, Route, Switch } from "react-router-dom"
@@ -9,28 +9,32 @@ import Login from "./Login"
 import SignUp from "./SignUp"
 import Profile from "./Profile"
 import CompanySearch from "./CompanySearch"
-
-
+import LogOut from "./LogOut"
+import { jwtDecode } from "jwt-decode"
+import UserContext from "./UserContext"
 
 
 function App() {
-  // const INITIAL_STATE =[]
-  // const [formData, setFormData] = useState(INITIAL_STATE)
-  // const [searchData,setSearchData] = useState(INITIAL_STATE)
-  // const submitForm = (username) => {setFormData(formData => [...formData, {username}])}
-  // const submitFormSearch = (term) =>{setSearchData(searchData => [...searchData, {term}])}
-  // console.log(searchData)
-  
-  return (
-  
-    <div className="App">
-        
-    <BrowserRouter>
-    <NavBar /> 
- 
-    <Routes>
-      <Route exact path="/"></Route>
 
+  // const [tokenState, setTokenState] = useState("")
+  // const [currentUser, setCurrentUser] = useState("")
+
+let token = localStorage.getItem("res.token")
+
+const decoded = jwtDecode(token)
+
+  return (
+    <UserContext.Provider value={decoded.username}> 
+    <div className="App">
+      
+    <BrowserRouter>
+   
+  
+    <NavBar /> 
+  
+    <Routes>
+      <Route exact path = "/"></Route>
+      
        <Route exact path="/companies" element={<CompanyList />}></Route>
 
        <Route exact path="/companies/:handle" element={<Company />}></Route> 
@@ -38,8 +42,8 @@ function App() {
        <Route exact path="/jobs" element={<Jobs />}></Route>
 
        <Route exact path="/jobs/:companyHandle" element={<Company />}></Route>
-
-       <Route exact path="/login" element={<Login />}></Route>
+      
+       <Route exact path="users/login" element={<Login />}></Route>
 
        <Route exact path="/signup" element={<SignUp />}></Route>
 
@@ -47,10 +51,17 @@ function App() {
 
        <Route exact path="/companies/search" element={<CompanySearch />}></Route>
 
-    </Routes>
+       <Route exact path="logout" element={<LogOut />}></Route>
+  
+       </Routes>
+       
     </BrowserRouter>  
+
     </div>
-  );
+    // </UserContext.Provider> 
+  )
+
 }
+
 
 export default App;

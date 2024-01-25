@@ -10,6 +10,7 @@ function NavBar() {
                 <NavLink exact to ="/" className="navbar-brand">
                     JOBLY
                 </NavLink>
+                
                 <Nav className="ml-auto" navbar>
                 
                     <NavItem>
@@ -22,7 +23,7 @@ function NavBar() {
                         </div>
 
                     <div className= 'link'>
-                        <NavLink to="/login">Login</NavLink>
+                        <NavLink to="users/login">Login</NavLink>
                     </div>
                     <div className= 'link'>
                         <NavLink to="/signup">Sign Up</NavLink>
@@ -30,6 +31,9 @@ function NavBar() {
                    <div className= 'link'>
                         <NavLink to="/profile">Profile</NavLink>
                         </div>
+                    <div className= 'link'>
+                        <NavLink to='/logout'>Log Out</NavLink>
+                    </div>
                     </NavItem>
                 
                 

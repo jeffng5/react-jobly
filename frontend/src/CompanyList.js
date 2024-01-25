@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import {JoblyApi} from "./api"
 import CompanyCard from "./CompanyCard"
 import "./SignUp.css"
 import { Link } from 'react-router-dom';
-import Search from "./Search"
-
+import UserContext from "./UserContext"
 
 
 const CompanyList = () => {
+    const username = useContext(UserContext)
+    console.log(username)
     
     const [data, setData] = useState([]);
     const [formData, setFormData] = useState("")
@@ -39,7 +40,7 @@ const CompanyList = () => {
         e.preventDefault();
         try{
             const res = await JoblyApi.getSearch(formData)
-            console.log(res)
+            setData(res.companyList)
         }
         catch (err) {
             console.log(err)
@@ -49,6 +50,7 @@ const CompanyList = () => {
     
     console.log(formData)
 
+if (username)
     return (
         <div>
             <form className="searchbar">

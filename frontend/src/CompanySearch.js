@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import {JoblyApi} from "./api"
 import { useParams } from 'react-router-dom';
-import JobCard from "./JobCard"
 import CompanyCard from "./CompanyCard"
 
 function CompanySearch() {
     const initialState=[]
     const { name } = useParams()
-
-    const [job, setJob] = useState(initialState)
     const [search, setSearch] = useState(initialState)
     useEffect(() => {
       async function getSearch(name){

@@ -192,11 +192,13 @@ class Company {
 
 
   static async findSearch(term) {
+    console.log(term)
     const result = await db.query(
-      `SELECT * FROM companies WHERE handle LIKE $1'`, [term]
+      "SELECT * FROM companies WHERE name ilike $1", ['%' + term + '%']
      
     )
-    const searchResults = result.rows[0]
+    console.log(result)
+    const searchResults = result.rows
       return searchResults
   }
 }

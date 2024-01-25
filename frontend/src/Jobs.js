@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {JoblyApi} from "./api"
 import JobCard from "./JobCard"
+import UserContext from "./UserContext"
 
 const Jobs = () => {
+    const username = useContext(UserContext)
+    console.log(username)
     const INITIAL_STATE= []
     const [data, setData] = useState(INITIAL_STATE);
     useEffect(()=> {
@@ -21,7 +24,7 @@ const Jobs = () => {
         }
     }
 
-    
+if (username) {
     return (
         <>
         <h1> This is the jobs page</h1>
@@ -39,7 +42,7 @@ const Jobs = () => {
         </>
 
     )
-
+        }
         }
 
 export default Jobs

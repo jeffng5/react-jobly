@@ -74,7 +74,7 @@ export class JoblyApi {
 // look up company via search term  
   static async getSearch(term) {
     let res = await this.request('companies/search', {term});
-    return res.companies;
+    return res;
   }
 
 // get jobs available for each company by handle
@@ -104,9 +104,5 @@ JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 
-localStorage.setItem(JoblyApi.token, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-"SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-"FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc"
-)
 
 
