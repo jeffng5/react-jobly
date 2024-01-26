@@ -6,7 +6,8 @@ import UserContext from "./UserContext"
 const AlternateComponent = ({id, title}) => {
     
     const username = useContext(UserContext)
-return (
+if (username)
+    return (
     <>
 
     
