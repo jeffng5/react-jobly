@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
-import {JoblyApi} from "./api"
+import { JoblyApi } from "./api"
 import CompanyCard from "./CompanyCard"
 import "./SignUp.css"
-import { Link } from 'react-router-dom';
 import UserContext from "./UserContext"
 
 

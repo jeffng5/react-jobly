@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './App.css';
 import Company from "./Company-Detail"
-import { BrowserRouter, Routes, Route, Switch } from "react-router-dom"
+import { BrowserRouter, Routes, Route} from "react-router-dom"
 import CompanyList from "./CompanyList"
 import Jobs from "./Jobs"
 import NavBar from "./NavBar"
@@ -19,11 +19,6 @@ console.log(token)
 const decoded = jwtDecode(token)
 
 function App() {
-
-
-  // const [tokenState, setTokenState] = useState("")
-  const [currentUser, setCurrentUser] = useState("")
-
 
 return (
     <UserContext.Provider value={decoded.username}> 

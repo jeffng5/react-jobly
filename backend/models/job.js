@@ -52,7 +52,8 @@ class Job {
                         j.company_handle AS "companyHandle",
                         c.name AS "companyName"
                  FROM jobs j 
-                   LEFT JOIN companies AS c ON c.handle = j.company_handle`;
+                   LEFT JOIN companies AS c ON c.handle = j.company_handle
+                   WHERE not exists (SELECT a.job_id FROM applications a WHERE a.job_id = j.id)`;
     let whereExpressions = [];
     let queryValues = [];
 
@@ -180,7 +181,12 @@ class Job {
     const jobsByCompany = result.rows
   }
 
-
+static async getAppliedJobs(username){
+  const result = await db.query(`SELECT a.job_id, j.title, j.salary from applications a LEFT JOIN
+  jobs j ON a.job_id= j.id WHERE username = $1`, [username])
+  const jobsApplied = result.rows
+  return jobsApplied
+}
 
 
 
