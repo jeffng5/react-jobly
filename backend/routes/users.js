@@ -104,7 +104,7 @@ router.get("/:username", ensureCorrectUserOrAdmin, async function (req, res, nex
  * Authorization required: admin or same-user-as-:username
  **/
 
-router.patch("/:username", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.patch("/:username", async function (req, res, next) {
   try {
     const validator = jsonschema.validate(req.body, userUpdateSchema);
     if (!validator.valid) {
@@ -114,6 +114,7 @@ router.patch("/:username", ensureCorrectUserOrAdmin, async function (req, res, n
 
     const user = await User.update(req.params.username, req.body);
     return res.json({ user });
+    console.log(user)
   } catch (err) {
     return next(err);
   }

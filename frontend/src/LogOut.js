@@ -1,10 +1,14 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 
 
 const LogOut = () => {
-    // localStorage.setItem("res.token", null)
-    console.log(localStorage.getItem("res.token"))
 
+
+    const [logout, setLogout] = useState("")
+    // localStorage.setItem("res.token", null)
+useEffect(()=> { 
+    setLogout("")}, [logout]
+    );
     return (
         <h2>Thanks for Visiting! You are logged out! </h2>
     )

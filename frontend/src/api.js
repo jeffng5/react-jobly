@@ -93,8 +93,8 @@ export class JoblyApi {
   }
 
 //edit user profile
-  static async editUser(username){
-    let res = await this.request(`users/${username}`, {username}, "patch")
+  static async editUser(username, firstName, lastName){
+    let res = await this.request(`users/${username}`,  {firstName, lastName}, "patch")
     return res
   }
 

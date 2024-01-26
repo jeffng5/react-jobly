@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import './CompanyCard.css';
 import { JoblyApi } from "./api"
 import UserContext from "./UserContext"
-import AlternateComponent from './AlternateComponent'
-
 
 
 /** Show company in list of jobs. */

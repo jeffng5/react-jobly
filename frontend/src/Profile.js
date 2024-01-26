@@ -1,59 +1,59 @@
-import React, { useState } from  'react'
+import React, { useState, useEffect, useContext } from  'react'
 import { JoblyApi } from "./api"
-import UserCard from "./UserCard"
+import UserContext from "./UserContext"
 
 
 const Profile = () => {
- 
+    const username = useContext(UserContext)
     const [data, setData] = useState("")
-    const [formData, setFormData]= useState({
-      
-        firstName: '',
-        lastName: '',
-        email: ''
-    })
+    const [formData, setFormData]= useState("")
     
-    async function getUsers() {
-        try{
-            const res = await JoblyApi.getUsers()
-            console.log(res)
-            setData(res)
-            console.log(data)
-        }
-        catch (err) {
-            console.log(err)
-        }
-    }
+    useEffect(()=> {
+        currentUser()
+    }, [setData]);
 
+
+    async function currentUser(){
+        try{
+        const res = await JoblyApi.getUsers(username)
+        console.log(res)
+        setData(res)
+        return res
+    } catch (err) { console.log(err)
+} console.log(data)}
+
+    const handleChange = (e) => {
+        const {name, value} = e.target
+        setFormData(formData => ({...formData, [name]: value}))
+      
+    }
+    console.log(formData)
     async function handleSubmit(e) {
         e.preventDefault();
-        setFormData({...formData, [e.target.name]: e.target.value})
         try{
-            const res = await JoblyApi.editUser(formData.username)
+            const res = await JoblyApi.editUser(username, formData.firstName, formData.lastName)
+            console.log(res)
         }
         catch (err) {
             console.log(err)
-        }
+        } console.log(formData)
+    
     }
 
     return (
         <>
         <h1>Edit Profile Page</h1>
-        {/* {data.map(c => (
-            <UserCard
-            username = {c.username}/>)
-            )
-        }
-             */}
+
+      <h2>Hi {username}, </h2>
         <form className = "searchbar">
           
             <div>
             <input id = "first_name" type='text' placeholder= "first name"
-            value={formData.firstName}></input>
+            value={formData.firstName} onChange={handleChange} name='firstName'></input>
             </div>
             <div>
             <input id = "last_name" type='text' placeholder= "last name"
-            value={formData.lastName}></input>
+            value={formData.lastName} onChange={handleChange} name='lastName'></input>
             </div>
             <div>
             <label for= "is_admin">is admin?</label>
@@ -79,4 +79,4 @@ const Profile = () => {
 
 
 
-export default Profile
+export default Profile;

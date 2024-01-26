@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './SignUp.css'
 import {JoblyApi} from "./api"
-import { Link } from 'react-router-dom'
+import { jwtDecode } from "jwt-decode"
+
 
 
 const Login = () => {
@@ -26,6 +27,12 @@ const handleChange = (e) => {
     console.log("THE TOKEN IS SET!")
     let token = localStorage.getItem("res.token")    
     console.log(token)
+    const decoded = jwtDecode(token)
+
+if (token) {
+    return(
+    <h2>You are logged in as <p>{decoded.username}!</p></h2>
+)}
 
 return (
     <>  

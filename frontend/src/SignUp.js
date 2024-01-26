@@ -18,10 +18,12 @@ const SignUp = () => {
         e.preventDefault();
         const res = await JoblyApi.signUp(formData.username, formData.password, formData.firstName,
             formData.lastName, formData.email)
-
+        console.log(res.token)
         localStorage.setItem("res.token", res.token)
     
     }
+let token = localStorage.getItem("res.token")
+
     return(
         <>
         <body>
@@ -44,6 +46,18 @@ const SignUp = () => {
         </>
 
     )
+
+    if (token) {
+        return ( <h3>
+            <div>
+            <h2>Welcome <span>{formData.username}</span><b>!</b></h2>
+            </div>
+            <div>
+                You have registered as <p>{formData.firstName} {formData.lastName}</p></div>
+            <div>
+                with an email of: <p>{formData.email}</p></div>
+        </h3>)
+    }
 }
 
 

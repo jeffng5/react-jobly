@@ -6,7 +6,6 @@ import AlternateComponent from "./AlternateComponent"
 
 const Jobs = () => {
     const username = useContext(UserContext)
-    console.log(username)
     const INITIAL_STATE= []
     const [data, setData] = useState(INITIAL_STATE);
     const [appliedData, setAppliedData] = useState(INITIAL_STATE)
