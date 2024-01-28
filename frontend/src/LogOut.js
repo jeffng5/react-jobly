@@ -1,18 +1,26 @@
-import React, {useState, useEffect} from "react"
-
+import React, { useContext } from "react"
+import { redirect } from 'react-router-dom'
+import { jwtDecode } from "jwt-decode"
 
 const LogOut = () => {
+    const localToken = localStorage.getItem('res.token')
+    const decoded2= jwtDecode(localToken)
+    console.log(decoded2.username)
+    let username = decoded2.username    
 
+    async function deleteUser (){ 
+        const result = localStorage.clear()
+    }
 
-    const [logout, setLogout] = useState("")
-    // localStorage.setItem("res.token", null)
-useEffect(()=> { 
-    setLogout("")}, [logout]
-    );
+    setTimeout(deleteUser, 2000)
     return (
-        <h2>Thanks for Visiting! You are logged out! </h2>
-    )
-}
+        <>
+        <h2>Thanks for Visiting! <p>{username}</p> You are logged out! </h2>
+  
+        </>
+        )
+        
+    }
 
 
 export default LogOut

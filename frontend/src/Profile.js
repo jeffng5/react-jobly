@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useContext } from  'react'
 import { JoblyApi } from "./api"
 import UserContext from "./UserContext"
+import { jwtDecode } from "jwt-decode"
 
 
 const Profile = () => {
-    const username = useContext(UserContext)
+    
+    const localToken = localStorage.getItem('res.token')
+    const decoded2= jwtDecode(localToken)
+    console.log(decoded2.username)
+    let username = decoded2.username
+
     const [data, setData] = useState("")
     const [formData, setFormData]= useState("")
     

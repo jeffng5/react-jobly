@@ -3,11 +3,16 @@ import { JoblyApi } from "./api"
 import CompanyCard from "./CompanyCard"
 import "./SignUp.css"
 import UserContext from "./UserContext"
-
+import { jwtDecode } from "jwt-decode"
 
 const CompanyList = () => {
-    const username = useContext(UserContext)
-    console.log(username)
+
+
+    const localToken = localStorage.getItem('res.token')
+    const decoded2= jwtDecode(localToken)
+    console.log(decoded2.username)
+    let username = decoded2.username
+    
     
     const [data, setData] = useState([]);
     const [formData, setFormData] = useState("")
@@ -73,6 +78,7 @@ if (username)
         </div>
 
     )
+
         }
 
 

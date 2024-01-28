@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './SignUp.css'
 import {JoblyApi} from "./api"
 import { jwtDecode } from "jwt-decode"
+import UserContext from "./UserContext"
+import NavBar from "./NavBar"
 
 
 
 const Login = () => {
+   
+
     const [formData, setFormData] = useState("")
 
 const handleChange = (e) => {
@@ -19,23 +23,21 @@ const handleChange = (e) => {
         e.preventDefault();
         
         const res = await JoblyApi.loginUser(formData.username, formData.password)
-   
+        console.log(res)
         localStorage.setItem("res.token", res.token)
-    
+        console.log("THE TOKEN IS SET!") 
     }
 
-    console.log("THE TOKEN IS SET!")
-    let token = localStorage.getItem("res.token")    
-    console.log(token)
-    const decoded = jwtDecode(token)
+   
 
-if (token) {
-    return(
-    <h2>You are logged in as <p>{decoded.username}!</p></h2>
-)}
+// if (token) {
+//     return(
+//     <h2>You are logged in as <p>{decoded.username}!</p></h2>
+// )}
 
 return (
     <>  
+      <NavBar />  
     <h1>Please Login</h1>
         <form>
             <div className= "log-in-form">
@@ -50,7 +52,7 @@ return (
             <button onClick={loginUser}>Login</button>
     
         </form>
-              
+          
     </>
 
 

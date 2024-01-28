@@ -1,19 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react'
-import {JoblyApi} from "./api"
+import { JoblyApi } from "./api"
 import JobCard from "./JobCard"
 import UserContext from "./UserContext"
 import AlternateComponent from "./AlternateComponent"
+import { jwtDecode } from "jwt-decode"
 
 const Jobs = () => {
-    const username = useContext(UserContext)
-    const INITIAL_STATE= []
-    const [data, setData] = useState(INITIAL_STATE);
-    const [appliedData, setAppliedData] = useState(INITIAL_STATE)
+    // const username = useContext(UserContext)
+    
+    const localToken = localStorage.getItem('res.token')
+    const decoded2= jwtDecode(localToken)
+    console.log(decoded2.username)
+    let username = decoded2.username
 
-    useEffect(()=> {
-        getJobData();
-       getAppliedJobData()
-    }, [setAppliedData]);
+    const [data, setData] = useState([]);
+    const [appliedData, setAppliedData] = useState([])
+
+
+useEffect(()=> {
+    getJobData();
+    getAppliedJobData();
+}, [setAppliedData]);
 
     async function getAppliedJobData() {
         try{
@@ -37,21 +44,20 @@ console.log(appliedData)
         catch (err){console.log(err)}
     }
 
-if (username) {
+
     return (
         <>
         <h1> This is the jobs page</h1>
         
-        {appliedData.map(c => (
+        {[...appliedData].map(c => (
             <AlternateComponent
             id= {c.id}
             title = {c.title}
             />
-        ))}
+        ))} 
 
 
-
-        {data.map(c => (
+        {[...data].map(c => (
             
             <JobCard
             id = {c.id}
@@ -66,7 +72,7 @@ if (username) {
         </>
 
     )
-        }
+        
         }
 
 export default Jobs
