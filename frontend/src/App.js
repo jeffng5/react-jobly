@@ -26,15 +26,9 @@ import UserContext from "./UserContext"
 function App() {
 
    <Login /> 
-   // let localToken = localStorage.getItem("res.token")
-   // console.log(localToken)
-   
-  
-  
-   
 
    return (
-      // <UserContext.Provider value={decoded2.username}>    
+  
     <div>
                    
     <BrowserRouter>
