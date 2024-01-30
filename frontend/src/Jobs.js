@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { JoblyApi } from "./api"
 import JobCard from "./JobCard"
-import UserContext from "./UserContext"
+import NavBar from "./NavBar"
 import AlternateComponent from "./AlternateComponent"
 import { jwtDecode } from "jwt-decode"
 
@@ -47,6 +47,7 @@ console.log(appliedData)
 
     return (
         <>
+        <NavBar />
         <h1> This is the jobs page</h1>
         
         {[...appliedData].map(c => (

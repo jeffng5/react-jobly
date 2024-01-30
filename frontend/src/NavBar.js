@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./NavBar.css"
+import AbridgedNavBar from "./AbridgedNavBar"
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from "reactstrap";
 
-function NavBar() {
+let token = localStorage.getItem("res.token")
+
+
+
+
+const NavBar = () => {
+
+if (!token) return (<AbridgedNavBar />)
+
     return (
         <div>
             <Navbar expand="md" >
@@ -43,8 +52,8 @@ function NavBar() {
             </Navbar>
 
         </div>
-    )
-}
+    )}
+   
 
 
 export default NavBar;

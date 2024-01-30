@@ -1,14 +1,15 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import './SignUp.css'
 import {JoblyApi} from "./api"
 import { jwtDecode } from "jwt-decode"
-import UserContext from "./UserContext"
+import AbridgedNavBar from "./AbridgedNavBar"
 import NavBar from "./NavBar"
+import { useNavigate } from 'react-router-dom'
 
-
+const token = localStorage.getItem('res.token')
 
 const Login = () => {
-   
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState("")
 
@@ -16,6 +17,8 @@ const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(formData => ({...formData,[name]: value }))
 }
+
+
 
 // function to login user + make API call to backend with formData
     async function loginUser(e) {
@@ -25,15 +28,11 @@ const handleChange = (e) => {
         const res = await JoblyApi.loginUser(formData.username, formData.password)
         console.log(res)
         localStorage.setItem("res.token", res.token)
-        console.log("THE TOKEN IS SET!") 
+        console.log("THE TOKEN IS SET!")
+        navigate('/companies') 
+ 
     }
 
-   
-
-// if (token) {
-//     return(
-//     <h2>You are logged in as <p>{decoded.username}!</p></h2>
-// )}
 
 return (
     <>  
@@ -48,15 +47,14 @@ return (
             <input id= "password" type= "text" name= 'password' onChange={handleChange} placeholder= "password" value={formData.password}></input>
             </div>
 
-    
-            <button onClick={loginUser}>Login</button>
-    
+         <button  onClick={loginUser}>Login</button>
+      
         </form>
           
     </>
-
-
 )
 }
+
+
 
 export default Login

@@ -1,5 +1,5 @@
-import React, { useContext } from "react"
-import { redirect } from 'react-router-dom'
+import React from "react"
+import AbridgedNavBar  from './AbridgedNavBar'
 import { jwtDecode } from "jwt-decode"
 
 const LogOut = () => {
@@ -15,11 +15,13 @@ const LogOut = () => {
     setTimeout(deleteUser, 2000)
     return (
         <>
+        <AbridgedNavBar />
         <h2>Thanks for Visiting! <p>{username}</p> You are logged out! </h2>
   
         </>
         )
         
+    
     }
 
 

@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from "react"
 import { JoblyApi } from "./api"
 import CompanyCard from "./CompanyCard"
 import "./SignUp.css"
-import UserContext from "./UserContext"
+import NavBar from "./NavBar"
 import { jwtDecode } from "jwt-decode"
+import ErrorPage from "./ErrorPage"
 
 const CompanyList = () => {
 
@@ -54,9 +55,12 @@ const CompanyList = () => {
     
     console.log(formData)
 
+
+  
 if (username)
     return (
         <div>
+            <NavBar />
             <form className="searchbar">
                 <input id="Search Company" type="text" placeholder= "search companies" onChange={handleChange} value={formData}></input>
                 {/* <Link to = 'search'> */}
@@ -71,13 +75,11 @@ if (username)
             name= {c.name}
             logoUrl = {c.logoUrl}
         />))}
-    
-        
-        
-        
         </div>
 
     )
+
+   
 
         }
 

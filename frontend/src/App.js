@@ -10,8 +10,7 @@ import SignUp from "./SignUp"
 import Profile from "./Profile"
 import CompanySearch from "./CompanySearch"
 import LogOut from "./LogOut"
-import { jwtDecode } from "jwt-decode"
-import UserContext from "./UserContext"
+import Homepage from './Homepage'
 
 
 // IN CASE YOU POP OFF THE TOKEN BY ACCIDENT
@@ -25,19 +24,18 @@ import UserContext from "./UserContext"
 
 function App() {
 
-   <Login /> 
-
+     
    return (
   
     <div>
-                   
+                 
     <BrowserRouter>
    
 
     {/* <NavBar />  */}
   
     <Routes>
-      <Route exact path = "/" element={<Login />}></Route>
+      <Route exact path = "/" element={<Homepage />}></Route>
       
        <Route exact path="/companies" element={<CompanyList />}></Route>
 
@@ -47,7 +45,7 @@ function App() {
 
        <Route exact path="/jobs/:companyHandle" element={<Company />}></Route>
       
-       <Route exact path="users/login" element={<Login />}></Route>
+       <Route exact path="/users/login" element={<Login />}></Route>
 
        <Route exact path="/signup" element={<SignUp />}></Route>
 
@@ -62,7 +60,7 @@ function App() {
     </BrowserRouter>  
 
     </div>
-   // </UserContext.Provider>   
+ 
 )
 }
 
