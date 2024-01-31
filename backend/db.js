@@ -5,7 +5,7 @@ const { getDatabaseUri } = require("./config");
 
 let db;
 
-if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV === "production") {
   db = new Client({
     connectionString: 'postgres://avmgzkha:r-o7iAFo6lNiAE8CRqqXwJBE6ffz3ULy@mahmud.db.elephantsql.com/avmgzkha',
     ssl: {
@@ -19,6 +19,6 @@ if (process.env.NODE_ENV === "production") {
 //   });
 // }
 console.log(getDatabaseUri())
-db.connect()};
+db.connect();
 
 module.exports = db;
