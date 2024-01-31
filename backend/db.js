@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "production") {
     ssl: {
       rejectUnauthorized: false
     }
-  });}
+  });
 // } else {
 //   db = new Client({
 //     // connectionString: getDatabaseUri()
@@ -19,6 +19,6 @@ if (process.env.NODE_ENV === "production") {
 //   });
 // }
 console.log(getDatabaseUri())
-db.connect();
+db.connect()};
 
 module.exports = db;
