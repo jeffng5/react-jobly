@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import './SignUp.css'
 import { JoblyApi } from "./api"
+import { useNavigate } from 'react-router-dom'
 
 
 const SignUp = () => {
- 
-    const [formData, setFormData] = useState("")
+    
+    const navigate = useNavigate()
+    const [formData, setFormData] = useState([])
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(formData => ({...formData, [name]: value}))
@@ -18,11 +20,11 @@ const SignUp = () => {
         e.preventDefault();
         const res = await JoblyApi.signUp(formData.username, formData.password, formData.firstName,
             formData.lastName, formData.email)
-        console.log(res.token)
         localStorage.setItem("res.token", res.token)
+        navigate('/companies')
     
     }
-let token = localStorage.getItem("res.token")
+
 
     return(
         <>
@@ -46,18 +48,6 @@ let token = localStorage.getItem("res.token")
         </>
 
     )
-
-    if (token) {
-        return ( <h3>
-            <div>
-            <h2>Welcome <span>{formData.username}</span><b>!</b></h2>
-            </div>
-            <div>
-                You have registered as <p>{formData.firstName} {formData.lastName}</p></div>
-            <div>
-                with an email of: <p>{formData.email}</p></div>
-        </h3>)
-    }
 }
 
 
