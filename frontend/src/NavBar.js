@@ -54,17 +54,37 @@ if (token)
     )
 
 else {
+    return (
+        <div>
+            <Navbar expand="md" >
+                <NavLink exact to ="" className="navbar-brand">
+                    JOBLY
+                </NavLink>
+                
+                <Nav className="ml-auto" navbar>
+                
+                    <NavItem>
 
-    return(
-    <>
-    <div className= 'link'>
-    <NavLink to="/users/login">Login</NavLink>
-</div> 
-<div className= 'link'>
-    <NavLink to="/signup">Sign Up</NavLink>
-</div></> )
-}
-}
+
+                    <div className= 'link'>
+                        <NavLink to="/users/login">Login</NavLink>
+                    </div> 
+                    <div className= 'link'>
+                        <NavLink to="/signup">Sign Up</NavLink>
+                   </div>
+
+                    </NavItem>
+                
+                
+                
+                </Nav>
+
+            </Navbar>
+
+        </div>
+    )
+
+}}
    
 
 
