@@ -7,7 +7,7 @@ let db;
 
 if (process.env.NODE_ENV === "production") {
   db = new Client({
-    connectionString: getDatabaseUri(),
+    connectionString: 'postgres://avmgzkha:r-o7iAFo6lNiAE8CRqqXwJBE6ffz3ULy@mahmud.db.elephantsql.com/avmgzkha',
     ssl: {
       rejectUnauthorized: false
     }
