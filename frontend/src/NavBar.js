@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./NavBar.css"
-import AbridgedNavBar from "./AbridgedNavBar"
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from "reactstrap";
 
 let token = localStorage.getItem("res.token")
