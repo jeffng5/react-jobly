@@ -3,7 +3,7 @@ import "./App.css"
 import AbridgedNavBar from "./AbridgedNavBar"
 
 
-
+//homepage component
 
 const Homepage = () => {
  

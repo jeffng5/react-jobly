@@ -1,32 +1,20 @@
 import React, { useState, useEffect, useContext } from  'react'
 import { JoblyApi } from "./api"
-import UserContext from "./UserContext"
+import NavBar from "./NavBar"
 import { jwtDecode } from "jwt-decode"
 
-
+//edit profile component
 const Profile = () => {
     
+   // getting the user session
     const localToken = localStorage.getItem('res.token')
     const decoded2= jwtDecode(localToken)
     console.log(decoded2.username)
     let username = decoded2.username
 
-    const [data, setData] = useState("")
+
     const [formData, setFormData]= useState("")
-    
-    useEffect(()=> {
-        currentUser()
-    }, [setData]);
 
-
-    async function currentUser(){
-        try{
-        const res = await JoblyApi.getUsers(username)
-        console.log(res)
-        setData(res)
-        return res
-    } catch (err) { console.log(err)
-} console.log(data)}
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -34,6 +22,8 @@ const Profile = () => {
       
     }
     console.log(formData)
+
+    //making the backend call to edit user during session
     async function handleSubmit(e) {
         e.preventDefault();
         try{
@@ -48,6 +38,7 @@ const Profile = () => {
 
     return (
         <>
+        <NavBar />
         <h1>Edit Profile Page</h1>
 
       <h2>Hi {username}, </h2>

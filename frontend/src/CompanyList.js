@@ -4,11 +4,12 @@ import CompanyCard from "./CompanyCard"
 import "./SignUp.css"
 import NavBar from "./NavBar"
 import { jwtDecode } from "jwt-decode"
-import ErrorPage from "./ErrorPage"
 
+
+//show list of companies in db
 const CompanyList = () => {
 
-
+    // token storage for if user is logged in
     const localToken = localStorage.getItem('res.token')
     const decoded2= jwtDecode(localToken)
     console.log(decoded2.username)
@@ -40,10 +41,11 @@ const CompanyList = () => {
         console.log(err)
         }
     }
-
+ //search function for search form data
     async function getSearchTerm(e) {
         e.preventDefault();
         try{
+//makes API call to backend for list. This query has an ilike 
             const res = await JoblyApi.getSearch(formData)
             setData(res.companyList)
         }
@@ -56,7 +58,7 @@ const CompanyList = () => {
     console.log(formData)
 
 
-  
+//conditional to protect route and see if user is logged in
 if (username)
     return (
         <div>

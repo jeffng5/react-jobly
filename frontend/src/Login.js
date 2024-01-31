@@ -9,10 +9,12 @@ import { useNavigate } from 'react-router-dom'
 const token = localStorage.getItem('res.token')
 
 const Login = () => {
+//redirectin purposes
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState("")
 
+//handleChaneg function to capture changes in form    
 const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(formData => ({...formData,[name]: value }))

@@ -10,7 +10,7 @@ import { jwtDecode } from "jwt-decode"
 const JobCard = ({ id, title, salary, equity, companyHandle, jobs }) => {
 
   const [button, setButton] = useState(true)
-  
+  //protecting route only users can use
     const token = localStorage.getItem('res.token')
     const decoded = jwtDecode(token)
     let username = decoded.username

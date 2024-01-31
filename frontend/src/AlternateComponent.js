@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
-import { JoblyApi } from "./api"
-import UserContext from "./UserContext"
 
+//Alternate component is used to display applied jobs 
 
 const AlternateComponent = ({id, title}) => {
     

@@ -5,8 +5,8 @@ import NavBar from "./NavBar"
 import AlternateComponent from "./AlternateComponent"
 import { jwtDecode } from "jwt-decode"
 
+//Main job component protected route
 const Jobs = () => {
-    // const username = useContext(UserContext)
     
     const localToken = localStorage.getItem('res.token')
     const decoded2= jwtDecode(localToken)
@@ -16,7 +16,7 @@ const Jobs = () => {
     const [data, setData] = useState([]);
     const [appliedData, setAppliedData] = useState([])
 
-
+//function to get job data and other to get list of applied data. API calls to backend.
 useEffect(()=> {
     getJobData();
     getAppliedJobData();

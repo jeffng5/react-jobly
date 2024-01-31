@@ -7,7 +7,7 @@ let token = localStorage.getItem("res.token")
 
 
 
-
+//main Navbar
 const NavBar = () => {
 
 

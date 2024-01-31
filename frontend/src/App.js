@@ -20,7 +20,7 @@ import Homepage from './Homepage'
 
 
 
-
+//main app file, mapping out endpoints to app and their component
 function App() {
 
      
@@ -29,9 +29,6 @@ function App() {
     <div>
                  
     <BrowserRouter>
-   
-
-    {/* <NavBar />  */}
   
     <Routes>
       <Route exact path = "/" element={<Homepage />}></Route>

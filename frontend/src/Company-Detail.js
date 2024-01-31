@@ -6,15 +6,12 @@ import JobCard from "./JobCard"
 function Company() {
     const initialState=[]
     const {handle} = useParams()
-    // const {companyHandle} = useParams()
+  
     const [company, setCompany] = useState(initialState);
     const [job, setJob] = useState(initialState)
     const [search, setSearch] = useState(initialState)
     useEffect(() => {
-      // async function getSearch(){
-      //   setSearch(await JoblyApi.getSearch(handle));
-      // }
-      // getSearch()  
+   
       
       async function getCompany() {
           setCompany(await JoblyApi.getCompany(handle));

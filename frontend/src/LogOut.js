@@ -2,6 +2,8 @@ import React from "react"
 import AbridgedNavBar  from './AbridgedNavBar'
 import { jwtDecode } from "jwt-decode"
 
+
+
 const LogOut = () => {
     const localToken = localStorage.getItem('res.token')
     const decoded2= jwtDecode(localToken)
@@ -11,7 +13,7 @@ const LogOut = () => {
     async function deleteUser (){ 
         const result = localStorage.clear()
     }
-
+//setTimeout to delete user after the username has been displayed
     setTimeout(deleteUser, 2000)
     return (
         <>

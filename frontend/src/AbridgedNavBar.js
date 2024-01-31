@@ -2,6 +2,7 @@ import "./NavBar.css"
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from "reactstrap";
 
+// Abridged Nav Bar is to "hide" certain links bc they are not used or needed during login/logout
 
 const AbridgedNavBar =() => {
 
