@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import './CompanyCard.css';
 import { JoblyApi } from "./api"
-import UserContext from "./UserContext"
+import { jwtDecode } from "jwt-decode"
 
 
 /** Show company in list of jobs. */
@@ -11,8 +11,9 @@ const JobCard = ({ id, title, salary, equity, companyHandle, jobs }) => {
 
   const [button, setButton] = useState(true)
   
-    const username = useContext(UserContext)
-
+    const token = localStorage.getItem('res.token')
+    const decoded = jwtDecode(token)
+    let username = decoded.username
   
     async function ApiCalltoBackend(){
       setButton(false)

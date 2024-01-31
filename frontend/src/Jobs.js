@@ -20,7 +20,7 @@ const Jobs = () => {
 useEffect(()=> {
     getJobData();
     getAppliedJobData();
-}, [setAppliedData]);
+}, []);
 
     async function getAppliedJobData() {
         try{
@@ -50,7 +50,7 @@ console.log(appliedData)
         <NavBar />
         <h1> This is the jobs page</h1>
         
-        {[...appliedData].map(c => (
+        {appliedData.map(c => (
             <AlternateComponent
             id= {c.id}
             title = {c.title}
@@ -58,7 +58,7 @@ console.log(appliedData)
         ))} 
 
 
-        {[...data].map(c => (
+        {data.map(c => (
             
             <JobCard
             id = {c.id}

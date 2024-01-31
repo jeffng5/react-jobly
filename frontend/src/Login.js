@@ -35,8 +35,10 @@ const handleChange = (e) => {
 
 
 return (
-    <>  
-      <NavBar />  
+    <> 
+
+ 
+      <AbridgedNavBar />  
     <h1>Please Login</h1>
         <form>
             <div className= "log-in-form">
