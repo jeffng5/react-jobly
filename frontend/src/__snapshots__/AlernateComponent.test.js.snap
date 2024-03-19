@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="card-body"
+  >
+    <h6
+      class="card-title"
+    />
+    <h4 />
+    <h2>
+      You applied for: 
+    </h2>
+  </div>
+</DocumentFragment>
+`;

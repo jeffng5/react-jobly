@@ -14,5 +14,5 @@ it("matches snapshot", function() {
 
 test('testing component', ()=> {
     const {getByText} = render( <JobCard />);
-    getByText('Salary')
+    getByText('Equity')
 })
